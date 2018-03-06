@@ -74,6 +74,7 @@ PImage lime;
 
 PImage pyro;
 PImage pyroland;
+int a = stage;
 
 void setup(){
   size(1350, 900);
@@ -1223,6 +1224,8 @@ void pyro(){
 void draw(){
   if (stage == 0){
     begin();
+    
+    a = stage;
   }
   if (stage == 1){
     pile();
@@ -1231,6 +1234,8 @@ void draw(){
     form();
     hint1();
     finish();
+    
+    a = stage;
   }
   if (stage == 2){
     start2();
@@ -1239,6 +1244,8 @@ void draw(){
     reaction();
     hint2();
     finish2();
+    
+    a = stage;
   }
   if (stage == 3){
     drag();
@@ -1251,9 +1258,13 @@ void draw(){
     exist();
     hint3();
     finish3();
+    
+    a = stage;
   }
   if (stage == 4){
     last();
+    
+    a = stage;
   }
 
   image(pyro, width - pyro.width, 0);
@@ -1266,12 +1277,9 @@ void draw(){
   }
   if (stage == 102){
     delay(2000);
-    stage++;
+    stage = a;
     background(255, 255, 255);
-  }
-  if (stage == 103){
-  
-  }
+  } 
 }
 
 void keyPressed(){
@@ -1308,10 +1316,14 @@ void keyPressed(){
   if (key == 'm'){
     background(255, 255, 255);
     stage++;
+    
+    hints = 0;
   }
   if (key == 'n'){
     background(255, 255, 255);
     stage--;
+    
+    hints = 0;
   }
 
   if (key == 'b'){
